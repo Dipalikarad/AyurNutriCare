@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-saffron-light: #F8B589;
+  --color-saffron: #F4A261;
+  --color-saffron-dark: #E76F51;
+
+  --color-sage-light: #84A59D;
+  --color-sage: #52796F;
+  --color-sage-dark: #354F52;
+
+  --color-cream-light: #FFFDF0;
+  --color-cream: #FEFAE0;
+  --color-cream-dark: #E9E5C9;
+
+  --color-herbal-light: #2D6A4F;
+  --color-herbal: #1B4332;
+  --color-herbal-dark: #081C15;
+
+  --color-gold: #D4AF37;
+  --color-gold-dark: #AA8811;
+
+  --color-earth: #3D2B1F;
+  --color-earth-dark: #261A13;
+
+  --font-playfair: "Playfair Display", serif;
+  --font-sans: "Inter", "Poppins", "Noto Sans Devanagari", sans-serif;
+}
+
+@utility glassmorphism {
+  background: rgba(254, 250, 224, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(82, 121, 111, 0.15);
+}
+
+@utility glassmorphism-premium {
+  background: linear-gradient(135deg, rgba(254, 250, 224, 0.7), rgba(254, 250, 224, 0.4));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(27, 67, 50, 0.05);
+}
+
+@utility glassmorphism-dark {
+  background: rgba(8, 28, 21, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(82, 121, 111, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@utility glow-border {
+  border: 1px solid transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(135deg, #52796f, #F4A261, #D4AF37);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+@utility text-glow-saffron {
+  text-shadow: 0 0 12px rgba(244, 162, 97, 0.5);
+}
+
+@utility text-glow-gold {
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+
+body {
+  @apply bg-[#FEFAE0]/15 text-[#3D2B1F] font-sans antialiased min-h-screen selection:bg-saffron/30;
+}
+
+h1, h2, h3, h4, .font-heading {
+  @apply font-playfair;
+}
+
+/* Custom Scrollbar for modern premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(82, 121, 111, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(82, 121, 111, 0.25);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 121, 111, 0.4);
+}
+
+/* Dark scrollbar for chatbot chat room */
+.dark-scrollbar::-webkit-scrollbar-track {
+  background: rgba(8, 28, 21, 0.2);
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(82, 121, 111, 0.4);
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.6);
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(82, 121, 111, 0.05) 25%, rgba(82, 121, 111, 0.15) 50%, rgba(82, 121, 111, 0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.bounce-dot {
+  animation: bounce 1s infinite ease-in-out;
+}
+.bounce-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bounce-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Active Nav Glow */
+.nav-glow {
+  position: relative;
+}
+.nav-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: #D4AF37;
+  border-radius: 9999px;
+  box-shadow: 0 0 8px #D4AF37;
+}
+
+/* Custom Gradients */
+.bg-mesh {
+  background: radial-gradient(circle at 10% 20%, rgba(82, 121, 111, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(244, 162, 97, 0.1) 0%, transparent 40%),
+              linear-gradient(135deg, rgba(254, 250, 224, 0.2), rgba(255, 255, 255, 0.9));
+}
+
+.bg-mesh-dark {
+  background: radial-gradient(circle at 10% 20%, rgba(27, 67, 50, 0.8) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(8, 28, 21, 0.9) 0%, transparent 50%),
+              linear-gradient(135deg, #081C15, #1B4332);
+}
+
