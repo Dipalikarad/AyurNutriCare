@@ -1,5 +1,5 @@
 const API_URL =
-  import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // headers
 const getAuthHeaders = () => {
@@ -46,54 +46,54 @@ const request = async (method, endpoint, data = null) => {
   }
 };
 
-// FULL API OBJECT (FIXED)
+// FULL API OBJECT (FIXED ROUTES)
 const api = {
   auth: {
     register: (userData) =>
-      request('POST', '/api/auth/register', userData),
+      request('POST', '/auth/register', userData),
 
     login: (credentials) =>
-      request('POST', '/api/auth/login', credentials),
+      request('POST', '/auth/login', credentials),
 
     getMe: () =>
-      request('GET', '/api/auth/me'),
+      request('GET', '/auth/me'),
 
     updateLanguage: (preferredLanguage) =>
-      request('PUT', '/api/auth/language', { preferredLanguage }),
+      request('PUT', '/auth/language', { preferredLanguage }),
   },
 
   patient: {
-    getAll: () => request('GET', '/api/patient'),
-    getProfile: (patientId) => request('GET', `/api/patient/${patientId}`),
+    getAll: () => request('GET', '/patient'),
+    getProfile: (patientId) => request('GET', `/patient/${patientId}`),
     updateProfile: (profileData) =>
-      request('PUT', '/api/patient/profile', profileData),
+      request('PUT', '/patient/profile', profileData),
   },
 
   dietPlan: {
     create: (planData) =>
-      request('POST', '/api/dietplan/create', planData),
+      request('POST', '/dietplan/create', planData),
   },
 
   foods: {
-    getAll: () => request('GET', '/api/foods'),
+    getAll: () => request('GET', '/foods'),
   },
 
   ritu: {
-    getCurrent: () => request('GET', '/api/ritu/current'),
+    getCurrent: () => request('GET', '/ritu/current'),
   },
 
   appointments: {
     getAvailable: () =>
-      request('GET', '/api/appointments/available'),
+      request('GET', '/appointments/available'),
   },
 
   chat: {
     sendMessage: (message, language) =>
-      request('POST', '/api/chat/message', { message, language }),
+      request('POST', '/chat/message', { message, language }),
   },
 
   analytics: {
-    getOverview: () => request('GET', '/api/analytics/overview'),
+    getOverview: () => request('GET', '/analytics/overview'),
   },
 };
 
